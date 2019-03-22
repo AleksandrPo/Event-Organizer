@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration form</title>
+    <link rel="stylesheet" type="text/css" th:href="@{../css/style.css}" />
+</head>
+<body>
+<div class="container">
+<form method="post" th:object="${userForm}" th:action="@{/registration}">
+
+    <div class="reg-form" th:classappend="${#fields.hasErrors('username')}? 'has-error':''">
+        <input class="reg-field" placeholder="Username" type="text" th:field="*{username}">
+        <p class="error-message" th:each="error: ${#fields.errors('username')}" th:text="${error}">Validation error</p>
+    </div>
+
+    <div class="reg-form" th:classappend="${#fields.hasErrors('password')}? 'has-error':''">
+        <input class="reg-field" placeholder="Password" type="password" th:field="*{password}">
+        <p class="error-message" th:each="error: ${#fields.errors('password')}" th:text="${error}">Validation error</p>
+    </div>
+
+    <div class="reg-form" th:classappend="${#fields.hasErrors('passwordConfirmation')}? 'has-error':''">
+        <input class="reg-field" placeholder="Repeat password" type="password" th:field="*{passwordConfirmation}">
+        <p class="error-message" th:each="error: ${#fields.errors('passwordConfirmation')}" th:text="${error}">Validation error</p>
+    </div>
+
+    <div class="reg-form" th:classappend="${#fields.hasErrors('email')}? 'has-error':''">
+        <input class="reg-field" placeholder="E-mail" type="text" th:field="*{email}">
+        <p class="error-message" th:each="error: ${#fields.errors('email')}" th:text="${error}">Validation error</p>
+    </div>
+
+    <div class="reg-form" th:classappend="${#fields.hasErrors('first_name')}? 'has-error':''">
+        <input class="reg-field" placeholder="First name" type="text" th:field="*{first_name}">
+        <p class="error-message" th:each="error: ${#fields.errors('first_name')}" th:text="${error}">Validation error</p>
+    </div>
+
+    <div class="reg-form" th:classappend="${#fields.hasErrors('last_name')}? 'has-error':''">
+        <input class="reg-field" placeholder="Last name" type="text" th:field="*{last_name}">
+        <p class="error-message" th:each="error: ${#fields.errors('last_name')}" th:text="${error}">Validation error</p>
+    </div>
+
+    <div class="reg-form" th:classappend="${#fields.hasErrors('phone')}? 'has-error':''">
+        <input class="reg-field" placeholder="Phone number" type="text" th:field="*{phone}">
+        <p class="error-message" th:each="error: ${#fields.errors('phone')}" th:text="${error}">Validation error</p>
+    </div>
+
+    <button class="register-btn">Register</button>
+    <a th:href="@{/login}">Already registered?</a>
+</form>
+</div>
+
+</body>
+</html>
